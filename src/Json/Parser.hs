@@ -8,8 +8,10 @@ import           Data.Text                      ( Text )
 
 import           Json.Options
 
-newtype Value = Value
-    { value :: Text }
+data Value = Value
+    { ttype :: !Text
+    , value :: !Text
+    }
     deriving (Show, Eq, Ord)
 
 $(deriveJSON defaultOptions ''Value)
@@ -63,3 +65,29 @@ data Argument = Argument
     deriving (Show, Eq, Ord)
 
 $(deriveJSON defaultOptions{fieldLabelModifier = defaultFieldLabelModifier} ''Argument)
+
+data Member = Member
+    { ttype    :: !Text
+    , name     :: !Text
+    , idlType  :: IdlType
+    , extAttrs :: [ExtAttr]
+    , idlType  :: IdlType
+    , value    :: Value
+    }
+    deriving (Show, Eq, Ord)
+
+$(deriveJSON defaultOptions{fieldLabelModifier = defaultFieldLabelModifier} ''Member)
+
+data Declaration = Declaration
+    { ttype       :: !Text
+    , name        :: !Text
+    , idlType     :: IdlType
+    , rhs         :: [Rhs]
+    , extAttrs    :: [ExtAttr]
+    , partial     :: Bool
+    , inheritance :: !Text
+    , members     :: [Member]
+    }
+    deriving (Show, Eq, Ord)
+
+$(deriveJSON defaultOptions{fieldLabelModifier = defaultFieldLabelModifier} ''Declaration)
