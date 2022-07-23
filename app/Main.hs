@@ -1,6 +1,9 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Main where
 
-import Lib
+import           Prelude                 hiding ( FilePath )
+import           Turtle
 
 main :: IO ()
-main = someFunc
+main = printf "Hello, world!\n"

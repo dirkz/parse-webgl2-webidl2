@@ -24,8 +24,6 @@ source-repository head
   location: https://github.com/githubuser/parse-webgl2-webidl2
 
 library
-  exposed-modules:
-      Lib
   other-modules:
       Paths_parse_webgl2_webidl2
   hs-source-dirs:
