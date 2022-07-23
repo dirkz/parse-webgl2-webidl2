@@ -14,7 +14,7 @@ data Value = Value
     }
     deriving (Show, Eq, Ord)
 
-$(deriveJSON defaultOptions ''Value)
+$(deriveJSON defaultOptions{fieldLabelModifier = defaultFieldLabelModifier} ''Value)
 
 data Rhs = Rhs
     { ttype :: !Text
@@ -38,7 +38,7 @@ $(deriveJSON defaultOptions{fieldLabelModifier = defaultFieldLabelModifier} ''Id
 data ExtAttr = ExtAttr
     { ttype :: !Text
     , name  :: !Text
-    , rhs   :: [Rhs]
+    , rhs   :: Rhs
     }
     deriving (Show, Eq, Ord)
 
