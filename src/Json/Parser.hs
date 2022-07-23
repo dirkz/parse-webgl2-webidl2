@@ -7,6 +7,7 @@ import           Data.Aeson.TH
 import           Data.Text                      ( Text )
 
 import           Json.Options
+import Json.Manual
 
 data Value = Value
     { ttype :: Maybe Text
@@ -23,22 +24,6 @@ data Rhs = Rhs
     deriving (Show, Eq, Ord)
 
 $(deriveJSON defaultOptions{fieldLabelModifier = defaultFieldLabelModifier} ''Rhs)
-
-data IdlType = IdlType
-    { ttype    :: !Text
-    , generic  :: !Text
-    , nullable :: Bool
-    , union    :: Bool
-    , idlType  :: IdlTypeInner
-    }
-    deriving (Show, Eq, Ord)
-
-data IdlTypeInner = IdlTypeObject IdlType | IdlTypeArray [IdlType] | IdlTypeText Text
-    deriving (Show, Eq, Ord)
-
-$(deriveJSON defaultOptions{fieldLabelModifier = defaultFieldLabelModifier} ''IdlTypeInner)
-
-$(deriveJSON defaultOptions{fieldLabelModifier = defaultFieldLabelModifier} ''IdlType)
 
 data ExtAttr = ExtAttr
     { ttype :: !Text
