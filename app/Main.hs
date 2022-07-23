@@ -11,5 +11,5 @@ import           Json.Parser
 main :: IO ()
 main = do
     jsonBS <- B.readFile "data/webgl2.idl.json"
-    let decls = decode jsonBS :: Maybe [Declaration]
+    let decls = eitherDecode jsonBS :: Either String [Declaration]
     pPrint decls
