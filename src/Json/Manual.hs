@@ -38,11 +38,16 @@ instance FromJSON IdlTypeInner where
                 .:  "idlType"
                 )
 
-    parseJSON (String s    ) = return $ IdlTypeText s
+    parseJSON (   String s) = return $ IdlTypeText s
 
-    parseJSON ar@(Array _) = IdlTypeArray <$> parseJSON ar
+    parseJSON ar@(Array  _) = IdlTypeArray <$> parseJSON ar
 
-    parseJSON invalid        = prependFailure "parsing idlType.idlType failed, "
-                                              (typeMismatch "Object" invalid)
+    parseJSON invalid       = prependFailure "parsing idlType.idlType failed, "
+                                             (typeMismatch "Object" invalid)
+
+instance ToJSON IdlTypeInner where
+    toJSON (IdlTypeText   s  ) = String s
+    toJSON (IdlTypeArray  ar ) = toJSON ar
+    toJSON (IdlTypeObject obj) = toJSON obj
 
 $(deriveJSON defaultOptions{fieldLabelModifier = defaultFieldLabelModifier} ''IdlType)
