@@ -61,7 +61,6 @@ data Member = Member
     , name     :: !Text
     , idlType  :: IdlType
     , extAttrs :: [ExtAttr]
-    , idlType  :: IdlType
     , value    :: Maybe Value
     }
     deriving (Show, Eq, Ord)
