@@ -24,6 +24,8 @@ dependencies:
 - turtle
 - text
 - aeson
+- bytestring
+- pretty-simple
 
 library:
   source-dirs: src
