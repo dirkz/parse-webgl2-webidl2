@@ -81,12 +81,12 @@ $(deriveJSON defaultOptions{fieldLabelModifier = defaultFieldLabelModifier} ''Me
 data Declaration = Declaration
     { ttype       :: !Text
     , name        :: !Text
-    , idlType     :: IdlType
-    , rhs         :: [Rhs]
+    , idlType     :: Maybe IdlType
+    , rhs         :: Maybe [Rhs]
     , extAttrs    :: [ExtAttr]
-    , partial     :: Bool
-    , inheritance :: !Text
-    , members     :: [Member]
+    , partial     :: Maybe Bool
+    , inheritance :: Maybe Text
+    , members     :: Maybe [Member]
     }
     deriving (Show, Eq, Ord)
 
