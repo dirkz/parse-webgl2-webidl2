@@ -11,7 +11,7 @@ import           Data.Text                      ( Text )
 import           Json.Options
 
 data IdlType = IdlType
-    { ttype    :: !Text
+    { ttype    :: Maybe Text
     , generic  :: !Text
     , nullable :: Bool
     , union    :: Bool

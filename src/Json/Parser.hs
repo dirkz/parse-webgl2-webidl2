@@ -28,7 +28,7 @@ $(deriveJSON defaultOptions{fieldLabelModifier = defaultFieldLabelModifier} ''Rh
 data ExtAttr = ExtAttr
     { ttype :: !Text
     , name  :: !Text
-    , rhs   :: Rhs
+    , rhs   :: Maybe Rhs
     }
     deriving (Show, Eq, Ord)
 
@@ -62,7 +62,7 @@ data Member = Member
     , idlType  :: IdlType
     , extAttrs :: [ExtAttr]
     , idlType  :: IdlType
-    , value    :: Value
+    , value    :: Maybe Value
     }
     deriving (Show, Eq, Ord)
 
@@ -70,7 +70,7 @@ $(deriveJSON defaultOptions{fieldLabelModifier = defaultFieldLabelModifier} ''Me
 
 data Declaration = Declaration
     { ttype       :: !Text
-    , name        :: !Text
+    , name        :: Maybe Text
     , idlType     :: Maybe IdlType
     , rhs         :: Maybe [Rhs]
     , extAttrs    :: [ExtAttr]
