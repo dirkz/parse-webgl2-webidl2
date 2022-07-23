@@ -9,7 +9,7 @@ import           Data.Text                      ( Text )
 import           Json.Options
 
 data Value = Value
-    { ttype :: !Text
+    { ttype :: Maybe Text
     , value :: !Text
     }
     deriving (Show, Eq, Ord)
