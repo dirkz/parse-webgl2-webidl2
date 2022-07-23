@@ -1,7 +1,8 @@
 module Json.Options
-    ( rhsFieldLabelModifier
+    ( defaultFieldLabelModifier
     ) where
 
-rhsFieldLabelModifier :: String -> String
-rhsFieldLabelModifier "ttype" = "type"
-rhsFieldLabelModifier name    = name
+defaultFieldLabelModifier :: String -> String
+defaultFieldLabelModifier "ttype"    = "type"
+defaultFieldLabelModifier "ddefault" = "default"
+defaultFieldLabelModifier name       = name
