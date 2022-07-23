@@ -25,6 +25,7 @@ source-repository head
 
 library
   exposed-modules:
+      Json.Options
       Json.Parser
   other-modules:
       Paths_parse_webgl2_webidl2
