@@ -42,8 +42,9 @@ instance FromJSON IdlTypeInner where
 
     parseJSON ar@(Array  _) = IdlTypeArray <$> parseJSON ar
 
-    parseJSON invalid       = prependFailure "parsing idlType.idlType failed, "
-                                             (typeMismatch "Object" invalid)
+    parseJSON invalid       = prependFailure
+        "nested idlType (idlType.idlType), "
+        (typeMismatch "not Object, String or Array" invalid)
 
 instance ToJSON IdlTypeInner where
     toJSON (IdlTypeText   s  ) = String s
