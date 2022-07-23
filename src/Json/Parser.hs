@@ -29,9 +29,14 @@ data IdlType = IdlType
     , generic  :: !Text
     , nullable :: Bool
     , union    :: Bool
-    , idlType  :: !Text
+    , idlType  :: IdlTypeInner
     }
     deriving (Show, Eq, Ord)
+
+data IdlTypeInner = IdlTypeObject IdlType | IdlTypeArray [IdlType] | IdlTypeText Text
+    deriving (Show, Eq, Ord)
+
+$(deriveJSON defaultOptions{fieldLabelModifier = defaultFieldLabelModifier} ''IdlTypeInner)
 
 $(deriveJSON defaultOptions{fieldLabelModifier = defaultFieldLabelModifier} ''IdlType)
 
